@@ -116,25 +116,44 @@
             <div class="container" style="margin-bottom: 20px">
               <div class="row g-0">
                 <div class="col-4">
-                  <b>ชื่อ-นามสกุล</b> {{ patient.prefix }}{{ patient.firstName }}
-                  {{ patient.lastName }}
+                  <b>ชื่อ-นามสกุล</b>
+                  <div>
+                    {{ patient.prefix }}{{ patient.firstName }} {{ patient.lastName }}
+                  </div>
                 </div>
-                <div class="col-4"><b>เพศ</b> {{ patient.gender }}</div>
-                <div class="col-4"><b>อายุ</b> {{ patient.age }} ปี</div>
+                <div class="col-4">
+                  <b>เพศ</b>
+                  <div>{{ patient.gender }}</div>
+                </div>
+                <div class="col-4">
+                  <b>อายุ</b>
+                  <div>{{ patient.age }} ปี</div>
+                </div>
               </div>
             </div>
             <div class="container" style="margin-bottom: 20px">
               <div class="row g-0">
-                <div class="col-4"><b>ชนิดมะเร็ง</b> <div v-for="i in patient.cancer" :key="i.HN">{{ i.cancerType }} ระยะที่ {{i.cancerState}}</div> </div>
-                <div class="col-4"><b>สถานะ</b> {{ patient.status }}</div>
+                <div class="col-4">
+                  <b>ชนิดมะเร็ง</b>
+                  <div v-for="i in patient.cancer" :key="i.HN">
+                    {{ i.cancerType }} ระยะที่ {{ i.cancerState }}
+                  </div>
+                </div>
+                <div class="col-4">
+                  <b>สถานะ</b>
+                  <div>{{ patient.status }}</div>
+                </div>
+                <div class="col-4">
+                  <b>หมายเลขโทรศัพท์</b>
+                  <div>{{ patient.phoneNumber }}</div>
+                </div>
               </div>
             </div>
             <div class="container" style="margin-bottom: 40px">
               <div class="row g-0">
-                <div class="col-4"><b>หมายเลขโทรศัพท์</b> {{ patient.phoneNumber }}</div>
-                <div class="col-4"><b>สูตรยาที่ได้รับ</b> {{ patient.formulaName }}</div>
                 <div class="col-4">
-                  <b>แพทย์ผู้ดูแล</b> {{ patient.doctorName }}
+                  <b>แพทย์ผู้ดูแล</b>
+                  <div>{{ patient.doctorName }}</div>
                 </div>
               </div>
             </div>
@@ -458,11 +477,14 @@ export default {
         }
         let page = moment().format("YYYY") - this.patient.birthDate.split("-")[0];
         this.patient["age"] = page;
-        axios.get(`http://localhost:3000/appointment/${HN}`).then((response)=>{
-          this.patient["doctorName"] = response.data
-        }).catch((error)=>{
-          console.log(error)
-        })
+        axios
+          .get(`http://localhost:3000/appointment/${HN}`)
+          .then((response) => {
+            this.patient["doctorName"] = response.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);

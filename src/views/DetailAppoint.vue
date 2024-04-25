@@ -116,21 +116,21 @@
             </button>
             <div class="container" style="margin-bottom: 20px">
               <div class="row g-0">
-                <div class="col-4"><b>HN</b> : {{ patient.HN }}</div>
+                <div class="col-4"><b>HN</b> <div>{{ patient.HN }}</div></div>
                 <div class="col-4">
-                  <b>เลขบัตรประจำตัวประชาชน</b> : {{ patient.IDcard }}
+                  <b>เลขบัตรประจำตัวประชาชน</b> <div>{{ patient.IDcard }}</div>
                 </div>
                 <div class="col-4">
-                  <b>ชื่อ-นามสกุล : </b> {{ patient.firstName }} {{ patient.lastName }}
+                  <b>ชื่อ-นามสกุล </b> <div>{{patient.prefix}}{{ patient.firstName }} {{ patient.lastName }}</div>
                 </div>
               </div>
             </div>
             <div class="container" style="margin-bottom: 20px">
               <div class="row g-0">
-                <div class="col-4"><b>เพศ : </b> {{ patient.gender }}</div>
-                <div class="col-4"><b>อายุ : </b> {{ patient.age }} ปี</div>
+                <div class="col-4"><b>เพศ </b> <div>{{ patient.gender }}</div></div>
+                <div class="col-4"><b>อายุ </b> <div>{{ patient.age }} ปี</div></div>
                 <div class="col-4">
-                  <b>หมายเลขโทรศัพท์ : </b>{{ patient.phoneNumber }}
+                  <b>หมายเลขโทรศัพท์ </b><div>{{ patient.phoneNumber }}</div>
                 </div>
               </div>
             </div>
@@ -143,7 +143,7 @@
                   </div>
                 </div>
                 <div class="col-4">
-                  <b>แพทย์ผู้ดูแล : </b> {{ doctor.firstName }} {{ doctor.lastName }}
+                  <b>แพทย์ผู้ดูแล </b> <div>{{ doctor.firstName }} {{ doctor.lastName }}</div>
                 </div>
               </div>
             </div>
